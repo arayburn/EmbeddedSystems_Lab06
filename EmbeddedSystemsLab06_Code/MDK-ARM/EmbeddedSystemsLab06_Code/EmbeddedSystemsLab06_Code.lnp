@@ -1,0 +1,25 @@
+--cpu Cortex-M0
+"embeddedsystemslab06_code\startup_stm32f072xb.o"
+"embeddedsystemslab06_code\main.o"
+"embeddedsystemslab06_code\stm32f0xx_it.o"
+"embeddedsystemslab06_code\stm32f0xx_hal_msp.o"
+"embeddedsystemslab06_code\stm32f0xx_hal_tim.o"
+"embeddedsystemslab06_code\stm32f0xx_hal_tim_ex.o"
+"embeddedsystemslab06_code\stm32f0xx_hal_rcc.o"
+"embeddedsystemslab06_code\stm32f0xx_hal_rcc_ex.o"
+"embeddedsystemslab06_code\stm32f0xx_hal.o"
+"embeddedsystemslab06_code\stm32f0xx_hal_i2c.o"
+"embeddedsystemslab06_code\stm32f0xx_hal_i2c_ex.o"
+"embeddedsystemslab06_code\stm32f0xx_hal_gpio.o"
+"embeddedsystemslab06_code\stm32f0xx_hal_dma.o"
+"embeddedsystemslab06_code\stm32f0xx_hal_cortex.o"
+"embeddedsystemslab06_code\stm32f0xx_hal_pwr.o"
+"embeddedsystemslab06_code\stm32f0xx_hal_pwr_ex.o"
+"embeddedsystemslab06_code\stm32f0xx_hal_flash.o"
+"embeddedsystemslab06_code\stm32f0xx_hal_flash_ex.o"
+"embeddedsystemslab06_code\stm32f0xx_hal_exti.o"
+"embeddedsystemslab06_code\system_stm32f0xx.o"
+--strict --scatter "EmbeddedSystemsLab06_Code\EmbeddedSystemsLab06_Code.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "EmbeddedSystemsLab06_Code.map" -o EmbeddedSystemsLab06_Code\EmbeddedSystemsLab06_Code.axf
