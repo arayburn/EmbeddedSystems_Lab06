@@ -98,13 +98,16 @@ int main(void)
 		}
 	// enable dac
 	RCC->APB1ENR |= RCC_APB1ENR_DACEN;	
-	// pick a dac output, PA4, DACout_1
+	// pick a dac output, PA4, DACount_1
 	GPIOA->MODER |= ((1<<8)|(1<<9));
-	DAC->CR |= (1<<12); 
+	 
 	// software trigger
-	DAC->CR |= ((1<<3)|(1<<4)|(1<<5));
+	DAC1->CR |= ((1<<3)|(1<<4)|(1<<5));
 	// enable 
-	DAC->CR |= (1<<2);
+	DAC1->CR |= (1<<2);
+	// actual enable
+	DAC1->CR |= (1<<0);
+		
 	// Triangle Wave: 8-bit, 32 samples/cycle
 	const uint8_t triangle_table[32] = {0,15,31,47,63,79,95,111,127,142,158,174,
 	190,206,222,238,254,238,222,206,190,174,158,142,127,111,95,79,63,47,31,15};
@@ -138,13 +141,15 @@ int main(void)
 		}
 		*/
 		// check off 2
-		
-		DAC->DHR8R1 = triangle_table[triangle_index];
+		DAC1->DHR8R1 &=~ (0xFF);
+		DAC1->DHR8R1 |= triangle_table[triangle_index];
 		triangle_index = triangle_index+1;
-		if (triangle_index == 31){
+		DAC1->SWTRIGR |= (1<<0);
+		HAL_Delay(1);
+		if (triangle_index == 32){
 			triangle_index = 0;
-			HAL_Delay(1);
 		}
+		
   }
   /* USER CODE END 3 */
 }
